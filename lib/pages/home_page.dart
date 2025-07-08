@@ -42,7 +42,7 @@ class _HomePageBody extends StatelessWidget {
 
     final int currentIndex = uiProvider.selectedMenuOpt;
 
-    // final tempScan = ScanModel(value: 'http://github.com/D14');
+    // final tempScan = ScanModel(value: '-12.099739950333246, -77.00436263497998');
     // DBProvider.db.newScan(tempScan).then(print);
 
     final scanListProvider = Provider.of<ScanListProvider>(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/utils/utils.dart';
 
 import '../providers/providers.dart';
 
@@ -15,11 +16,9 @@ class ScanPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Scan QR')),
       body: MobileScanner(
         controller: controller,
-        onDetect: (barcodeCapture) {
+        onDetect: (barcodeCapture) async {
           final barcode = barcodeCapture.barcodes.first;
           final value = barcode.rawValue;
-
-          // final value = 'geo:15.33.15.66';
 
           final scanListProvider = Provider.of<ScanListProvider>(
             context,
@@ -27,9 +26,9 @@ class ScanPage extends StatelessWidget {
           );
 
           if (value != null) {
+            final newScan = await scanListProvider.newScan(value);
             controller.stop();
-            scanListProvider.newScan(value);
-            Navigator.pop(context, value);
+            launch(context, newScan);
           }
         },
       ),
