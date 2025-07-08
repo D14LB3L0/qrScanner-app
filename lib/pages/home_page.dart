@@ -14,7 +14,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('History '),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.delete_forever)),
+          IconButton(
+            onPressed: () {
+              final scanListProvider = Provider.of<ScanListProvider>(
+                context,
+                listen: false,
+              );
+              scanListProvider.deleteAll();
+            },
+            icon: Icon(Icons.delete_forever),
+          ),
         ],
       ),
       body: _HomePageBody(),

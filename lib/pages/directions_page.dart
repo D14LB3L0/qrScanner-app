@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:qr_reader/providers/providers.dart';
+
+import '../widgets/widgets.dart';
 
 class DirectionsPage extends StatelessWidget {
   const DirectionsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final scanListProvider = Provider.of<ScanListProvider>(context);
-    final scans = scanListProvider.scans;
-
-    return ListView.builder(
-      itemBuilder: (_, i) => ListTile(
-        leading: Icon(
-          Icons.compass_calibration,
-          color: Theme.of(context).primaryColor,
-        ),
-        title: Text(scans[i].value),
-        subtitle: Text(scans[i].id.toString()),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-        onTap: () => print(scans[i].id),
-      ),
-      itemCount: scans.length,
-    );
+    return ScanTitles(type: 'http');
   }
 }

@@ -41,7 +41,6 @@ class ScanListProvider extends ChangeNotifier {
 
   deleteScanById(int id) async{
     await DBProvider.db.deleteScan(id);
-    uploadScansByType(selectedType);
   }
 
 }

@@ -17,7 +17,7 @@ class ScanPage extends StatelessWidget {
         controller: controller,
         onDetect: (barcodeCapture) {
           final barcode = barcodeCapture.barcodes.first;
-          final value = barcode.rawValue!;
+          final value = barcode.rawValue;
 
           // final value = 'geo:15.33.15.66';
 
@@ -26,10 +26,9 @@ class ScanPage extends StatelessWidget {
             listen: false,
           );
 
-          scanListProvider.newScan(value);
-
           if (value != null) {
             controller.stop();
+            scanListProvider.newScan(value);
             Navigator.pop(context, value);
           }
         },
