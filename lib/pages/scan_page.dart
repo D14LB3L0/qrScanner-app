@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/providers.dart';
 
 class ScanPage extends StatelessWidget {
   const ScanPage({super.key});
@@ -14,12 +17,19 @@ class ScanPage extends StatelessWidget {
         controller: controller,
         onDetect: (barcodeCapture) {
           final barcode = barcodeCapture.barcodes.first;
-          final value = barcode.rawValue;
+          final value = barcode.rawValue!;
 
-          // final value = 'https://https://github.com/D14LB3L0';
+          // final value = 'geo:15.33.15.66';
+
+          final scanListProvider = Provider.of<ScanListProvider>(
+            context,
+            listen: false,
+          );
+
+          scanListProvider.newScan(value);
 
           if (value != null) {
-            controller.stop(); 
+            controller.stop();
             Navigator.pop(context, value);
           }
         },

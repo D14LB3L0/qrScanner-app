@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButton: ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );  
+    );
   }
 }
 
@@ -33,13 +33,20 @@ class _HomePageBody extends StatelessWidget {
 
     final int currentIndex = uiProvider.selectedMenuOpt;
 
-    // final tempScan = ScanModel(value: 'http://google.com');
-    // DBProvider.db.deleteAllScans().then(print);
+    // final tempScan = ScanModel(value: 'http://github.com/D14');
+    // DBProvider.db.newScan(tempScan).then(print);
+
+    final scanListProvider = Provider.of<ScanListProvider>(
+      context,
+      listen: false,
+    );
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.uploadScansByType('geo');
         return MapsPage();
       case 1:
+        scanListProvider.uploadScansByType('http');
         return DirectionsPage();
 
       default:
