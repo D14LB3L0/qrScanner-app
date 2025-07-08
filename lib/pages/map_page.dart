@@ -99,7 +99,7 @@ class _MapPageState extends State<MapPage> {
                     });
                     mapController.move(_currentCenter, _currentZoom);
                   },
-                  child: const Icon(Icons.zoom_in),
+                  child: const Icon(Icons.zoom_in, color: Colors.white,),
                 ),
                 const SizedBox(height: 10),
                 FloatingActionButton(
@@ -111,17 +111,16 @@ class _MapPageState extends State<MapPage> {
                     });
                     mapController.move(_currentCenter, _currentZoom);
                   },
-                  child: const Icon(Icons.zoom_out),
+                  child: const Icon(Icons.zoom_out, color: Colors.white,),
                 ),
                 const SizedBox(height: 10),
                 FloatingActionButton(
                   heroTag: 'reset',
                   mini: true,
-                  backgroundColor: Colors.blue,
                   onPressed: () {
                     mapController.move(_scanLatLng, 13.0);
                   },
-                  child: const Icon(Icons.my_location),
+                  child: const Icon(Icons.my_location, color: Colors.white,),
                 ),
               ],
             ),
