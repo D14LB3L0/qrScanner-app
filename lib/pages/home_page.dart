@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/models/scan_model.dart';
 import 'package:qr_reader/pages/pages.dart';
 import 'package:qr_reader/providers/providers.dart';
 
@@ -22,17 +23,19 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButton: ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
+    );  
   }
 }
 
 class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final uiProvider = Provider.of<UiProvider>(context);
 
     final int currentIndex = uiProvider.selectedMenuOpt;
+
+    // final tempScan = ScanModel(value: 'http://google.com');
+    // DBProvider.db.deleteAllScans().then(print);
 
     switch (currentIndex) {
       case 0:
